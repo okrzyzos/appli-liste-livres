@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import BoutonAjout from './components/BoutonAjout'
+import FormulaireAjout from './containers/FormulaireAjout'
+import Titre from './components/Titre'
+import './components/Titre.css'
+import Livres from './containers/Livres'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "bootstrap/dist/css/bootstrap.min.css"
+
+
+export default class App extends Component {
+
+
+    state = {
+
+        ajoutLivre: false
+    }
+
+
+    handleClikAjout = () => {
+        this.setState((oldState, props) => {
+
+            return { ajoutLivre: !oldState.ajoutLivre }
+        })
+    }
+
+
+    render() {
+        return ( <
+            >
+            <
+            div className = "container" >
+            <
+            Titre titre = "Liste des livres" / >
+            <
+            Livres ajoutLivre = { this.state.ajoutLivre }
+            fermerAjoutLivre = {
+                () => this.setState({ ajoutLivre: false }) }
+            /> <
+            BoutonAjout clik = { this.handleClikAjout } > {!this.state.ajoutLivre ? "Ajouter" : "ferme l' ajout" } <
+            /BoutonAjout> <
+            /div> <
+            />
+        )
+    }
 }
-
-export default App;
